@@ -1,96 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cyberpunk CTF Design System - Dark hacker theme with green neon */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cyberpunk Color Palette */
+    --background: 0 0% 3%;
+    --foreground: 120 100% 50%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 5%;
+    --card-foreground: 120 100% 80%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 120 100% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 120 80% 60%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 120 60% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 120 100% 35%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 50% 20%;
+    --input: 0 0% 8%;
+    --ring: 120 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Cyberpunk Specific Colors */
+    --neon-green: 120 100% 50%;
+    --neon-green-dim: 120 80% 30%;
+    --cyber-dark: 0 0% 3%;
+    --cyber-darker: 0 0% 1%;
+    --glitch-pink: 320 100% 70%;
+    --glitch-cyan: 180 100% 70%;
+    
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon-green)), hsl(var(--glitch-cyan)));
+    --gradient-dark: linear-gradient(180deg, hsl(var(--cyber-darker)), hsl(var(--cyber-dark)));
+    
+    /* Shadows */
+    --glow-green: 0 0 20px hsl(var(--neon-green) / 0.5);
+    --glow-strong: 0 0 40px hsl(var(--neon-green) / 0.8);
   }
 }
 
@@ -100,6 +63,176 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono antialiased;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    background: hsl(var(--cyber-darker));
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--neon-green) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--glitch-cyan) / 0.1) 0%, transparent 50%);
   }
+
+  /* Glitch Text Effect */
+  .glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: hsl(var(--glitch-pink));
+    z-index: -1;
+  }
+
+  .glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: hsl(var(--glitch-cyan));
+    z-index: -2;
+  }
+
+  /* Neon Glow Effect */
+  .neon-text {
+    color: hsl(var(--neon-green));
+    text-shadow: 
+      0 0 5px hsl(var(--neon-green)),
+      0 0 10px hsl(var(--neon-green)),
+      0 0 15px hsl(var(--neon-green));
+  }
+
+  .neon-border {
+    border: 1px solid hsl(var(--neon-green));
+    box-shadow: 
+      inset 0 0 10px hsl(var(--neon-green) / 0.2),
+      0 0 10px hsl(var(--neon-green) / 0.3);
+  }
+
+  /* Terminal Cursor */
+  .cursor::after {
+    content: '█';
+    animation: blink 1s infinite;
+    color: hsl(var(--neon-green));
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--cyber-darker));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--neon-green));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--neon-green) / 0.8);
+  }
+}
+
+@layer components {
+  /* Cyber Button */
+  .cyber-btn {
+    @apply relative px-6 py-3 font-mono font-semibold uppercase tracking-wider;
+    @apply bg-transparent border-2 border-primary text-primary;
+    @apply transition-all duration-300 overflow-hidden;
+    
+    background: linear-gradient(45deg, transparent, hsl(var(--neon-green) / 0.1), transparent);
+  }
+
+  .cyber-btn:hover {
+    @apply text-background;
+    background: hsl(var(--neon-green));
+    box-shadow: var(--glow-strong);
+    transform: translateY(-2px);
+  }
+
+  .cyber-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--neon-green) / 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .cyber-btn:hover::before {
+    left: 100%;
+  }
+
+  /* Cyber Input */
+  .cyber-input {
+    @apply bg-transparent border-b-2 border-primary/30 text-primary placeholder-primary/50;
+    @apply focus:border-primary focus:outline-none focus:ring-0;
+    @apply transition-all duration-300;
+  }
+
+  .cyber-input:focus {
+    box-shadow: 0 2px 0 hsl(var(--neon-green));
+  }
+
+  /* Cyber Card */
+  .cyber-card {
+    @apply bg-card/50 backdrop-blur-sm border border-primary/20;
+    @apply rounded-sm shadow-lg;
+    background-image: 
+      linear-gradient(135deg, hsl(var(--neon-green) / 0.05) 0%, transparent 50%);
+  }
+
+  .cyber-card:hover {
+    @apply border-primary/40;
+    box-shadow: 0 0 20px hsl(var(--neon-green) / 0.2);
+  }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-2px, -1px); }
+  20% { transform: translate(-1px, 1px); }
+  30% { transform: translate(1px, 2px); }
+  40% { transform: translate(-1px, 1px); }
+  50% { transform: translate(-2px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  70% { transform: translate(1px, -1px); }
+  80% { transform: translate(-1px, 2px); }
+  90% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(2px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, -2px); }
+  40% { transform: translate(1px, -1px); }
+  50% { transform: translate(2px, 1px); }
+  60% { transform: translate(-2px, -1px); }
+  70% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -2px); }
+  90% { transform: translate(-2px, 2px); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
